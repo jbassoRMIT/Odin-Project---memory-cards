@@ -1,0 +1,29 @@
+#root{
+  padding: 10px;
+  width: 100%;
+}
+
+.abilities{
+  border: 2px solid blue;
+}
+
+.moves{
+  border: 2px solid green;
+}
+
+.movesAbilities > *{
+  margin: 3px;
+  padding: 3px;
+}
+
+.mainHeading{
+  margin: 3px;
+  padding: 3px;
+}
+
+.movesList{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 4px;
+}
+
