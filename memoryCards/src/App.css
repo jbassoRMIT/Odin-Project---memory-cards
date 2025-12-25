@@ -27,3 +27,9 @@
   grid-gap: 4px;
 }
 
+button{
+  background-color: rgb(148, 186, 246);
+  border: 2px solid black;
+  border-radius: 3px;
+}
+
