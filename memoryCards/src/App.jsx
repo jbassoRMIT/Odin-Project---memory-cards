@@ -30,11 +30,12 @@ function App() {
 
   return (
     <>
-      <h2 className='mainHeading'>hello world</h2>
+      <h2 className='mainHeading'>Pokemon database</h2>
       {submitted? <h2>Displaying info for {pokemonName}</h2>:null}
       {/* <FetchAbilities pokemon={pokemon}/>
       <FetchMoves pokemon={pokemon}/> */}
       <SearchPokemon pokemonName={pokemonName} handleChange={handleChange} handleSubmit={handleSubmit} clearFunction={clear}/>
+      <PokemonList/>
       {/* {/* <FetchAbilities pokemon={"bulbasaur"}/> */}
       {submitted?<FetchMoves pokemon={pokemonName}/> :null}
       {/* <PokemonList/> */}

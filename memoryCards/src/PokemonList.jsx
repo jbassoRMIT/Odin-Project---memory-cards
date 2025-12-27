@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 export default function PokemonList(){
     const [data,setData]=useState([]);
+    const [display,setDisplay]=useState(false);
     
     useEffect(()=>{
         fetch(`https://pokeapi.co/api/v2/pokemon?limit=100`)
@@ -14,14 +15,27 @@ export default function PokemonList(){
         .catch(error => console.error(error))
     },[])
 
+    const handleClick=function(){
+        setDisplay(true);
+    }
+
+    const displayPokemon=function(){
+        return(
+            <div>
+                <h3>List of all pokemon</h3>
+                <ul>
+                    {data.map((pokemon)=>{
+                        return <li>{pokemon.name}</li>
+                    })}
+                </ul>
+            </div>
+        )
+    }
+
     return(
         <div>
-            <h3>List of all pokemon</h3>
-            <ul>
-                {data.map((pokemon)=>{
-                    return <li>{pokemon.name}</li>
-                })}
-            </ul>
+            <button onClick={handleClick}>Display all pokemon</button>
+            {display?displayPokemon():null}
         </div>
     )
 }
