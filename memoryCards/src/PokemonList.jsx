@@ -4,6 +4,7 @@ import { useEffect } from "react";
 export default function PokemonList(){
     const [data,setData]=useState([]);
     const [display,setDisplay]=useState(false);
+    const [size,setSize]=useState("");
     
     useEffect(()=>{
         fetch(`https://pokeapi.co/api/v2/pokemon?limit=100`)
@@ -15,16 +16,27 @@ export default function PokemonList(){
         .catch(error => console.error(error))
     },[])
 
-    const handleClick=function(){
+    const handleChange=function(e){
+        setSize(e.target.value);
+        console.log(size);
+    }
+    
+    const handleSubmit=function(e){
+        e.preventDefault();
         setDisplay(true);
     }
+
+    //write a function to filter pokemon based on index
+    const pokeList=data.filter((pokemon,index)=> {
+        return index<size;
+    })
 
     const displayPokemon=function(){
         return(
             <div>
                 <h3>List of all pokemon</h3>
                 <ul>
-                    {data.map((pokemon)=>{
+                    {pokeList.map((pokemon)=>{
                         return <li>{pokemon.name}</li>
                     })}
                 </ul>
@@ -32,9 +44,18 @@ export default function PokemonList(){
         )
     }
 
+    const reset=function(){
+        setDisplay(false);
+    }
+
     return(
         <div>
-            <button onClick={handleClick}>Display all pokemon</button>
+            <form action="" onSubmit={handleSubmit}>
+                <label htmlFor="size">How many pokemon would you like to return?</label>
+                <input type="number" name="size" id="size" value={size} onChange={handleChange}/><br/>
+                <button type="submit">Display pokemon</button>
+            </form>
+            <button onClick={reset}>Reset</button>
             {display?displayPokemon():null}
         </div>
     )
