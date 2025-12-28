@@ -5,6 +5,7 @@ import FetchAbilities from './FetchAbilities'
 import SearchPokemon from './SearchPokemon';
 import PokemonList from './PokemonList';
 import ShowImage from './ShowImage';
+import PokemonInfo from './PokemonInfo';
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
       {submitted?<FetchMoves pokemon={pokemonName}/> :null}
       {/* <PokemonList/> */}
       {submitted? <ShowImage searchTerm={pokemonName}/>:null}
+      <PokemonInfo pokemon={"bulbasaur"}/>
     </>
   )
 }

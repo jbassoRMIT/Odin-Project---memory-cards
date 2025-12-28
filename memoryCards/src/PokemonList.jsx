@@ -5,6 +5,7 @@ export default function PokemonList(){
     const [data,setData]=useState([]);
     const [display,setDisplay]=useState(false);
     const [size,setSize]=useState("");
+    const num=23;
     
     useEffect(()=>{
         fetch(`https://pokeapi.co/api/v2/pokemon?limit=100`)
@@ -24,6 +25,8 @@ export default function PokemonList(){
     const handleSubmit=function(e){
         e.preventDefault();
         setDisplay(true);
+        console.log(data);
+        console.log(size);
     }
 
     //write a function to filter pokemon based on index
