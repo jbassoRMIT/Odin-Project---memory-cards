@@ -41,7 +41,7 @@ function App() {
       {submitted?<FetchMoves pokemon={pokemonName}/> :null}
       {/* <PokemonList/> */}
       {submitted? <ShowImage searchTerm={pokemonName}/>:null}
-      <PokemonInfo pokemon={"bulbasaur"}/>
+      <PokemonInfo pokemon={"charizard"}/>
     </>
   )
 }

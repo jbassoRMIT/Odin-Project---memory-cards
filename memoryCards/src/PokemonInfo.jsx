@@ -4,20 +4,19 @@ import { useEffect } from "react";
 
 export default function PokemonInfo({pokemon}){
     //Fetch info from api
-    const [data,setData]=useState([]);
+    const [name,setName]=useState([]);
+    const [stats,setStats]=useState([]);
         
     useEffect(()=>{
         fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
         .then(response => response.json())
         .then((data) => {
         console.log(data);
-        setData(data);
+        setName(data.name);
+        setStats(data.stats);
         })
         .catch(error => console.error(error))
     },[])
-
-    const name=data.name;
-    const stats=data.stats;
 
     return(
         <div>
