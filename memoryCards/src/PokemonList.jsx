@@ -1,11 +1,13 @@
 //This function returns a list of pokemon in the database up to certain number
 import { useState } from "react";
 import { useEffect } from "react";
+import PokemonInfo from "./PokemonInfo";
 export default function PokemonList(){
     const [data,setData]=useState([]);
     const [display,setDisplay]=useState(false);
     const [size,setSize]=useState("");
-    const num=23;
+    const [moreInfo,setMoreInfo]=useState(false);
+    const [listIndex,setListIndex]=useState(0);
     
     useEffect(()=>{
         fetch(`https://pokeapi.co/api/v2/pokemon?limit=100`)
@@ -34,13 +36,37 @@ export default function PokemonList(){
         return index<size;
     })
 
+    const handlePokemonClick=function(n){
+        setMoreInfo(true);
+        setListIndex(n);
+
+    }
+
+    const showMoreInfo=function(pokemonName){
+        const hideInfo=function(){
+            setMoreInfo(false);
+        }
+        
+        return(
+            <div>
+                <PokemonInfo pokemon={pokemonName}/>
+                <button onClick={hideInfo}>Hide</button>
+            </div>
+        )
+    }
+
     const displayPokemon=function(){
         return(
             <div>
                 <h3>List of all pokemon</h3>
                 <ul>
-                    {pokeList.map((pokemon)=>{
-                        return <li>{pokemon.name}</li>
+                    {pokeList.map((pokemon,index)=>{
+                        return(
+                            <div>
+                                <li onClick={() => handlePokemonClick(index)}>{pokemon.name}</li>
+                                {(moreInfo && listIndex==index)? showMoreInfo(pokemon.name):null}
+                            </div>
+                        ) 
                     })}
                 </ul>
             </div>

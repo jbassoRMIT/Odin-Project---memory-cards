@@ -6,6 +6,7 @@ import SearchPokemon from './SearchPokemon';
 import PokemonList from './PokemonList';
 import ShowImage from './ShowImage';
 import PokemonInfo from './PokemonInfo';
+import ClickPokemonInfo from './ClickPokemonInfo';
 
 function App() {
 
@@ -32,16 +33,17 @@ function App() {
   return (
     <>
       <h2 className='mainHeading'>Pokemon database</h2>
-      {submitted? <h2>Displaying info for {pokemonName}</h2>:null}
+      {/* {submitted? <h2>Displaying info for {pokemonName}</h2>:null}
       {/* <FetchAbilities pokemon={pokemon}/>
       <FetchMoves pokemon={pokemon}/> */}
-      <SearchPokemon pokemonName={pokemonName} handleChange={handleChange} handleSubmit={handleSubmit} clearFunction={clear}/>
-      <PokemonList/>
+      {/* <SearchPokemon pokemonName={pokemonName} handleChange={handleChange} handleSubmit={handleSubmit} clearFunction={clear}/>
+      <PokemonList/> */}
       {/* {/* <FetchAbilities pokemon={"bulbasaur"}/> */}
-      {submitted?<FetchMoves pokemon={pokemonName}/> :null}
-      {/* <PokemonList/> */}
-      {submitted? <ShowImage searchTerm={pokemonName}/>:null}
-      <PokemonInfo pokemon={"charizard"}/>
+      {/* {submitted?<FetchMoves pokemon={pokemonName}/> :null} */}
+      <PokemonList/>
+      {/* {submitted? <ShowImage searchTerm={pokemonName}/>:null } */}
+      {/* <PokemonInfo pokemon={"charizard"}/> */}
+      {/* <ClickPokemonInfo/> */}
     </>
   )
 }
